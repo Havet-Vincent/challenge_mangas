@@ -25,24 +25,5 @@ class LibraryApi {
             return result.data.results;
 
         } catch(error) {console.log(error)};
-    } 
-
-    /**
-    * @todo Utiliser la méthode fetch de l'api. Construire resource_url avec les propriétés resource & query
-    * @param {string} query => peut être par exemple '/10087', '/anime?q=FateZero'
-    * @returns {Promise} Promesse qui retourne les données JSON en cas de succès
-    */
-    // loadList = async (query) => {
-
-    //     try {
-    //         const result = await axios.get(`${this.base_url}/search/${this.resource}?q=${query}&page=1`);
-
-    //         //console.log(result.data.results);
-           
-    //         return result.data.results;
-
-    //     } catch(error) {console.log(error)};
-    // } 
-    
-    
+    }    
 }
