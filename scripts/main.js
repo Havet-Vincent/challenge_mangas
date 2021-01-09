@@ -22,29 +22,29 @@ function init() {
 
 
     // display modal
-    function showModal(item) {
-        console.log('nous sommes dans la modal', item);
-        console.log(item.duration);
+    const showModal = (item) => {
+        document.querySelector("#modal").innerHTML = "";
+   
+        let temp1 = document.querySelector("#sample")
+        let copyHTML = document.importNode(temp1.content, true);
+        let trailer = item.trailer_url;
 
-        let temp1 = document.querySelector("#sample").content
-        let copyHTML = document.importNode(temp1, true);
         copyHTML.querySelector(".modal-title").textContent = `🔥 ${item.title}`;
-        copyHTML.querySelector(".modal-video").href = `${item.trailer_url}`;
+        trailer != null ? copyHTML.querySelector(".modal-video").href = `${item.trailer_url}`  : copyHTML.querySelector(".modal-video").innerHTML = "";;
         copyHTML.querySelector(".td-source").textContent = `${item.source}`;
         copyHTML.querySelector(".td-duration").textContent = `${item.duration}`;
-        // const genre = item.map((itemGenre) => {
-        //     copyHTML.querySelector(".badge-info").textContent +="${item.genres}";
-        // });
-        copyHTML.querySelector(".badge-info").textContent +="Anime";
+        item.genres.map((itemGenre) => {
+             copyHTML.querySelector(".badge-info").textContent +=`${itemGenre.name}`+' ';
+         });
         copyHTML.querySelector(".td-synopsis").textContent = `${item.synopsis}`;
-        document.querySelector("#app").appendChild(copyHTML);
+        document.querySelector("#modal").appendChild(copyHTML);
     }
 
 
 
 
     // display results of select in search bar
-    function displayResultStrings(searchStrings) {
+    const displayResultStrings = (searchStrings) => {
         const htmlString = searchStrings.map((searchString) => {
             return `
                     <div class="col-sm-6 col-md-4 col-xl-2">
@@ -80,7 +80,7 @@ function init() {
     }
 
     // display results enter in search bar     
-    function displaySearchStrings(searchStrings) {
+    const displaySearchStrings = (searchStrings) => {
         const htmlString = searchStrings.map((searchString) => {
             return `
                   <a class="dropdown-item" href="javascript:void(0);" id="${searchString.title}">${searchString.title}</a>
