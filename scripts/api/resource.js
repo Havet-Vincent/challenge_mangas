@@ -1,4 +1,4 @@
-class LibraryResource {
+class LibraryResource  {
 
     /**
      * @todo Mettre api et resource dans une propriété
@@ -7,7 +7,10 @@ class LibraryResource {
      * @see https://jikan.docs.apiary.io/#reference/
      */
     constructor(api, resource) {
-        throw new Error("Not implemented")
+        this.api = 'https://api.jikan.moe/v3';
+        this.resource = 'anime';
+        // this.api = api;
+        // this.resource = resource;
     }
 
     /**
@@ -15,7 +18,15 @@ class LibraryResource {
      * @param {string} query => peut être par exemple '/10087', '/anime?q=FateZero'
      * @returns {Promise} Promesse qui retourne les données JSON en cas de succès
      */
-    fetch(query) {
-        throw new Error("Not implemented")
-    }
+    loadList = async (query) => {
+
+        try {
+            const result = await axios.get(`${this.api}/search/${this.resource}?q=${query}&page=1`);
+
+            //console.log(result.data.results);
+           
+            return result.data.results;
+
+        } catch(error) {console.log(error)};
+    } 
 }
