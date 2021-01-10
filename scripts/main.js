@@ -9,9 +9,10 @@ function init() {
 
     const api = 'https://api.jikan.moe/v3';
     const resource = 'anime';
+
     const searchLoad = new LibraryApi(api, resource);
     const searchList= new LibraryResource(api, resource);
-    const searchResource = new SearchResource();
+    const searchResource = new SearchResource(api, resource);
 
     
     // Search Bar
@@ -30,17 +31,15 @@ function init() {
         let trailer = item.trailer_url;
 
         copyHTML.querySelector(".modal-title").textContent = `🔥 ${item.title}`;
-        trailer != null ? copyHTML.querySelector(".modal-video").href = `${item.trailer_url}`  : copyHTML.querySelector(".modal-video").innerHTML = "";;
+        trailer != null ? copyHTML.querySelector(".modal-video").href = `${item.trailer_url}`  : copyHTML.querySelector(".modal-video").innerHTML = "";
         copyHTML.querySelector(".td-source").textContent = `${item.source}`;
         copyHTML.querySelector(".td-duration").textContent = `${item.duration}`;
         item.genres.map((itemGenre) => {
-             copyHTML.querySelector(".badge-info").textContent +=`${itemGenre.name}`+' ';
+            copyHTML.querySelector(".badge-info").textContent +=`${itemGenre.name}`+' ';
          });
         copyHTML.querySelector(".td-synopsis").textContent = `${item.synopsis}`;
         document.querySelector("#modal").appendChild(copyHTML);
     }
-
-
 
 
     // display results of select in search bar
