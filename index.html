@@ -70,16 +70,13 @@
     <!-- //////////////////////////////////////////////////////////// -->
     <!-- MODAL -->
     <!-- //////////////////////////////////////////////////////////// -->
-    <div id="modal"></div>
-    <template id="sample">
-    <div class="modal fade show" id="modal-detail-anime">
+    <div class="modal fade" id="modal-detail-anime">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <!-- Element dynamique -->
-
-                    <h5 class="modal-title"></h5>
-                    <a class="btn btn-link modal-video" title="Click to see trailer" target="_blank" href="">🎥 Trailer</a>
+                    <h5 class="modal-title"></h5> 
+                    <a class="btn btn-link modal-video" title="Click to see trailer" target="_blank" href="">🎥 Trailer</a>       
                     <!-- /Element dynamique -->
                     
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
@@ -89,7 +86,7 @@
                         <tbody>
                             <!-- Element dynamique -->
                             <tr>
-                                <td>Source</td>
+                                <td class="source">Source</td>
                                 <td class="td-source"></td>
                             </tr>
                             <tr>
@@ -99,7 +96,6 @@
                             <tr>
                                 <td>Genre</td>
                                 <td class="td-genre">
-                                    <span class="badge badge-info"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -111,14 +107,22 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary button-modal" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    </template>
     <!-- //////////////////////////////////////////////////////////// -->
     <!-- /MODAL -->
+    <!-- //////////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////////// -->
+    <!-- Template -->
+    <!-- //////////////////////////////////////////////////////////// -->
+    <template id="#sample1"> 
+        <h5 class="modal-title"></h5>      
+    </template>
+    <!-- //////////////////////////////////////////////////////////// -->
+    <!-- /Template-->
     <!-- //////////////////////////////////////////////////////////// -->
  
 

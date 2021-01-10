@@ -14,31 +14,42 @@ function init() {
     const searchList= new LibraryResource(api, resource);
     const searchResource = new SearchResource(api, resource);
 
+    //document.querySelector("#modal-detail-anime").innerHTML = "";
+
     
-    // Search Bar
+    // constantes on selector
     const formControl = document.querySelector(".form-control"),
           dropdownMenu = document.querySelector(".dropdown-menu"),
-          rowCard = document.querySelector(".row");
+          rowCard = document.querySelector(".row"),
+          buttonClose = document.querySelector(".close"),
+          buttonModal = document.querySelector(".button-modal");
 
 
 
     // display modal
     const showModal = (item) => {
-        document.querySelector("#modal").innerHTML = "";
-   
-        let temp1 = document.querySelector("#sample")
-        let copyHTML = document.importNode(temp1.content, true);
-        let trailer = item.trailer_url;
+        // document.querySelector(".modal").textContent = "";
+        //    document.querySelector(".modal-title").href = "";
 
-        copyHTML.querySelector(".modal-title").textContent = `🔥 ${item.title}`;
-        trailer != null ? copyHTML.querySelector(".modal-video").href = `${item.trailer_url}`  : copyHTML.querySelector(".modal-video").innerHTML = "";
-        copyHTML.querySelector(".td-source").textContent = `${item.source}`;
-        copyHTML.querySelector(".td-duration").textContent = `${item.duration}`;
+        document.querySelector(".modal-title").textContent = `🔥 ${item.title}`;
+        let trailer = item.trailer_url;
+        console.log("video : ", trailer);
+        trailer !== null ? document.querySelector(".modal-video").href = `${item.trailer_url}` : document.querySelector(".modal-video").href = "";
+
+        document.querySelector(".td-source").textContent = `${item.source}`;
+        document.querySelector(".td-duration").textContent = `${item.duration}`;
+
+
         item.genres.map((itemGenre) => {
-            copyHTML.querySelector(".badge-info").textContent +=`${itemGenre.name}`+' ';
-         });
-        copyHTML.querySelector(".td-synopsis").textContent = `${item.synopsis}`;
-        document.querySelector("#modal").appendChild(copyHTML);
+            let tdGenre = document.querySelector(".td-genre");
+            let tdSpan = document.createElement("span");
+            tdSpan.className = "badge badge-info ml-1";
+            tdSpan.textContent = "";
+            tdSpan.textContent = `${itemGenre.name}`;
+            tdGenre.append(tdSpan);
+        });
+
+        document.querySelector(".td-synopsis").textContent = `${item.synopsis}`;
     }
 
 
@@ -53,8 +64,7 @@ function init() {
                                 <p class="h6">${searchString.title}<span class="badge badge-info ml-1">${searchString.score}</span></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#modal-detail-anime">Info</button> -->
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#modal-detail-anime" id="${searchString.mal_id}">Info</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary btn-info-button" data-toggle="modal" data-target="#modal-detail-anime" id="${searchString.mal_id}">Info</button>
                                     </div>
                                     <small class="text-muted">${searchString.rated}.</small>
                                 </div>
@@ -65,7 +75,7 @@ function init() {
         }).join('');
     
         rowCard.innerHTML = htmlString;
-        const btn = document.querySelectorAll(".btn"),
+        const btn = document.querySelectorAll(".btn-info-button"),
               totalBtn = btn.length;
         // add listener on each result
         for (let i = 0; i < totalBtn; i++) {
@@ -113,6 +123,29 @@ function init() {
         }
     });
 
+    // listener in modal button close
+    buttonClose.addEventListener('click', (event) => {
+        event.preventDefault();
+        let temp = document.querySelector(".td-genre");
+        let tdSpan = document.querySelector(".badge-info");
+        console.log('tdspan vaut :', tdSpan);
+        if(document.querySelector(".badge-info")) {
+            while (temp.firstChild) {
+                temp.removeChild(temp.firstChild);
+            }
+        }
+    })
+
+    // listener in modal button data-dismiss="modal"
+    buttonModal.addEventListener('click', (event) => {
+        event.preventDefault();
+        let temp2 = document.querySelector(".td-genre");
+        if(document.querySelector(".badge-info")) {
+            while (temp2.firstChild) {
+                temp2.removeChild(temp2.firstChild);
+            }
+        }
+    })
 }
 
 
