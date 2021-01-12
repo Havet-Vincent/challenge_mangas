@@ -7,10 +7,9 @@ class LibraryResource  {
      * @see https://jikan.docs.apiary.io/#reference/
      */
     constructor(api, resource) {
-        this.api = 'https://api.jikan.moe/v3';
-        this.resource = 'anime';
-        // this.api = api;
-        // this.resource = resource;
+
+        this.api = api;
+        this.resource = resource;
     }
 
     /**
@@ -22,8 +21,6 @@ class LibraryResource  {
 
         try {
             const result = await axios.get(`${this.api}/search/${this.resource}?q=${query}&page=1`);
-
-            //console.log(result.data.results);
            
             return result.data.results;
 

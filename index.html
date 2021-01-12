@@ -25,10 +25,10 @@
 
                 <!-- Formulaire de recherche -->
                 <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search anime 💬" data-toggle="dropdown"  name ="searchBar" minlength="3" />
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search anime 💬" data-toggle="dropdown"  name ="searchBar" minlength="3" autocomplete="off"/>
                     <!-- Element dynamique -->
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);" id="Fate/Zero">Fate/Zero</a>
+
                     </div>
                     <!-- /Element dynamique -->
                 </form>
@@ -41,6 +41,14 @@
         <div class="py-5 bg-light">
             <div class="container">
                 <h1>My favorite animes 👺</h1>
+
+                <!-- //////////////////////////////////////////////////////////// -->
+                <!-- Loader -->
+                <!-- //////////////////////////////////////////////////////////// -->
+                <div id="loader" class="loader d-none"></div>
+                <!-- //////////////////////////////////////////////////////////// -->
+                <!-- /Loader -->
+                <!-- //////////////////////////////////////////////////////////// -->
 
                 <!-- //////////////////////////////////////////////////////////// -->
                 <!-- ANIME LIST -->
@@ -70,16 +78,13 @@
     <!-- //////////////////////////////////////////////////////////// -->
     <!-- MODAL -->
     <!-- //////////////////////////////////////////////////////////// -->
-    <div id="app"></div>
-    <template id="sample">
-    <div class="modal fade show" id="modal-detail-anime">
+    <div class="modal fade d-none" id="modal-detail-anime">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <!-- Element dynamique -->
-
-                    <h5 class="modal-title"></h5>
-                    <a class="btn btn-link modal-video" title="Click to see trailer" target="_blank" href="">🎥 Trailer</a>
+                    <h5 class="modal-title"></h5> 
+                    <a class="btn btn-link modal-video" title="Click to see trailer" target="_blank" href="">🎥 Trailer</a>       
                     <!-- /Element dynamique -->
                     
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
@@ -89,7 +94,7 @@
                         <tbody>
                             <!-- Element dynamique -->
                             <tr>
-                                <td>Source</td>
+                                <td class="source">Source</td>
                                 <td class="td-source"></td>
                             </tr>
                             <tr>
@@ -98,8 +103,7 @@
                             </tr>
                             <tr>
                                 <td>Genre</td>
-                                <td>
-                                    <span class="badge badge-info"></span>
+                                <td class="td-genre">
                                 </td>
                             </tr>
                             <tr>
@@ -111,14 +115,22 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary button-modal" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    </template>
     <!-- //////////////////////////////////////////////////////////// -->
     <!-- /MODAL -->
+    <!-- //////////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////////// -->
+    <!-- Template -->
+    <!-- //////////////////////////////////////////////////////////// -->
+    <template id="#sample1"> 
+        <h5 class="modal-title"></h5>      
+    </template>
+    <!-- //////////////////////////////////////////////////////////// -->
+    <!-- /Template-->
     <!-- //////////////////////////////////////////////////////////// -->
  
 
@@ -130,6 +142,7 @@
     <script src="./scripts/api/resource.js"></script>
     <script src="./scripts/api/animeResource.js"></script>
     <script src="./scripts/api/searchResource.js"></script>
+    <script src="./scripts/utils.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 

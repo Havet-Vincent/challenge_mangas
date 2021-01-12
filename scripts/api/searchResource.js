@@ -1,8 +1,9 @@
-class SearchResource extends LibraryResource {
+class SearchResource {
 
     
     constructor(api, resource) {
-        super(api, resource);
+        this.api = api;
+        this.resource = resource;
     }
     /**
      * @param {string} name
