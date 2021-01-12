@@ -51,9 +51,11 @@ function init() {
         for (let i = 0; i < totalBtn; i++) {
             btn[i].addEventListener("click", async (event) => {
                 event.preventDefault();
+                addClassDoneAtRow();
                 removeClassDoneAtLoader();
                 const searchItem = await searchResource.byName(event.target.id);
                 addClassDoneAtLoader();
+                removeClassDoneAtRow();
 
                 showModal(searchItem);
             });
@@ -78,12 +80,14 @@ function init() {
         for (let i = 0; i < totaldropdownItem; i++) {
             dropdownItem[i].addEventListener("click", async (event) => {
                 event.preventDefault();
+                addClassDoneAtRow()
                 removeClassDoneAtLoader();
-                rowCard.classList.add("d-none");
+                
                 let searchResults = await searchList.loadList(event.target.id);
                 let filteredResults = searchResults.filter((result) => result.title.includes(event.target.id));
                 addClassDoneAtLoader();
-                rowCard.classList.remove("d-none");
+                removeClassDoneAtRow()
+                
                 displayResultStrings(filteredResults);
             });
         }
