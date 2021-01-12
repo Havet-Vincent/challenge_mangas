@@ -31,6 +31,22 @@ function addClassDoneAtModal() {
 }
 
 /**
+ * @todo function display Cards 
+ * @returns void
+ */
+function removeClassDoneAtRow() {
+    document.querySelector(".row").classList.remove("d-none");
+}
+
+/**
+ * @todo function hidden Cards
+ * @returns void
+ */
+function addClassDoneAtRow() {
+    document.querySelector(".row").classList.add("d-none");
+}
+
+/**
 * @todo function show modal
 * @param {array} 
 * @returns void
