@@ -1,49 +1,25 @@
 /**
- * @todo function display loader
+ * @todo function toggle loader
  * @returns void
  */
-function removeClassDoneAtLoader() {
-    document.querySelector("#loader").classList.remove("d-none");
+function toggleClassDoneAtLoader() {
+    document.querySelector("#loader").classList.toggle("d-none");
 }
 
 /**
- * @todo function hidden loader
+ * @todo function toggle Modal
  * @returns void
  */
-function addClassDoneAtLoader() {
-    document.querySelector("#loader").classList.add("d-none");
+function toggleClassDoneAtModal() {
+    document.querySelector("#modal-detail-anime").classList.toggle("d-none");
 }
 
 /**
- * @todo function display Modal 
+ * @todo function toggle Cards
  * @returns void
  */
-function removeClassDoneAtModal() {
-    document.querySelector("#modal-detail-anime").classList.remove("d-none");
-}
-
-/**
- * @todo function hidden Modal
- * @returns void
- */
-function addClassDoneAtModal() {
-    document.querySelector("#modal-detail-anime").classList.add("d-none");
-}
-
-/**
- * @todo function display Cards 
- * @returns void
- */
-function removeClassDoneAtRow() {
-    document.querySelector(".row").classList.remove("d-none");
-}
-
-/**
- * @todo function hidden Cards
- * @returns void
- */
-function addClassDoneAtRow() {
-    document.querySelector(".row").classList.add("d-none");
+function toggleClassDoneAtRow() {
+    document.querySelector(".row").classList.toggle("d-none");
 }
 
 /**

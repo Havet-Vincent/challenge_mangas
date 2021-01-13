@@ -1,5 +1,5 @@
 /**
- * @todo Point d'entrée pour faire vos exercices...
+ * @todo application pour rechercher des films animés japonais.
  * @author Havet Vincent
  * @version 1.0.0
  */
@@ -51,12 +51,13 @@ function init() {
         for (let i = 0; i < totalBtn; i++) {
             btn[i].addEventListener("click", async (event) => {
                 event.preventDefault();
-                addClassDoneAtRow();
+                toggleClassDoneAtRow();
                 removeClassDoneAtLoader();
-                const searchItem = await searchResource.byName(event.target.id);
-                addClassDoneAtLoader();
-                removeClassDoneAtRow();
 
+                const searchItem = await searchResource.byName(event.target.id);
+
+                addClassDoneAtLoader();
+                toggleClassDoneAtRow();
                 showModal(searchItem);
             });
         }
@@ -67,8 +68,8 @@ function init() {
     const displaySearchStrings = (searchStrings) => {
         const htmlString = searchStrings.map((searchString) => {
             return `
-                              <a class="dropdown-item" href="javascript:void(0);" id="${searchString.title}">${searchString.title}</a>
-                              `;
+                    <a class="dropdown-item" href="javascript:void(0);" id="${searchString.title}">${searchString.title}</a>
+                `;
 
         }).join('');
         console.log(dropdownMenu);
@@ -82,12 +83,12 @@ function init() {
                 event.preventDefault();
                 addClassDoneAtRow()
                 removeClassDoneAtLoader();
-                
+
                 let searchResults = await searchList.loadList(event.target.id);
                 let filteredResults = searchResults.filter((result) => result.title.includes(event.target.id));
+
                 addClassDoneAtLoader();
                 removeClassDoneAtRow()
-                
                 displayResultStrings(filteredResults);
             });
         }
