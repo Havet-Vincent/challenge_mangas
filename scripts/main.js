@@ -1,5 +1,5 @@
 /**
- * @todo Point d'entrée pour faire vos exercices...
+ * @todo application pour rechercher des films animés japonais.
  * @author Havet Vincent
  * @version 1.0.0
  */
@@ -51,12 +51,13 @@ function init() {
         for (let i = 0; i < totalBtn; i++) {
             btn[i].addEventListener("click", async (event) => {
                 event.preventDefault();
-                addClassDoneAtRow();
-                removeClassDoneAtLoader();
-                const searchItem = await searchResource.byName(event.target.id);
-                addClassDoneAtLoader();
-                removeClassDoneAtRow();
+                toggleClassDoneAtRow();
+                toggleClassDoneAtLoader();
 
+                const searchItem = await searchResource.byName(event.target.id);
+
+                toggleClassDoneAtLoader();
+                toggleClassDoneAtRow();
                 showModal(searchItem);
             });
         }
@@ -67,11 +68,11 @@ function init() {
     const displaySearchStrings = (searchStrings) => {
         const htmlString = searchStrings.map((searchString) => {
             return `
-                              <a class="dropdown-item" href="javascript:void(0);" id="${searchString.title}">${searchString.title}</a>
-                              `;
+                    <a class="dropdown-item" href="javascript:void(0);" id="${searchString.title}">${searchString.title}</a>
+                `;
 
         }).join('');
-        console.log(dropdownMenu);
+        
         dropdownMenu.innerHTML = htmlString;
         const dropdownItem = document.querySelectorAll(".dropdown-item"),
             totaldropdownItem = dropdownItem.length;
@@ -80,14 +81,14 @@ function init() {
         for (let i = 0; i < totaldropdownItem; i++) {
             dropdownItem[i].addEventListener("click", async (event) => {
                 event.preventDefault();
-                addClassDoneAtRow()
-                removeClassDoneAtLoader();
-                
+                toggleClassDoneAtRow()
+                toggleClassDoneAtLoader();
+
                 let searchResults = await searchList.loadList(event.target.id);
                 let filteredResults = searchResults.filter((result) => result.title.includes(event.target.id));
-                addClassDoneAtLoader();
-                removeClassDoneAtRow()
-                
+
+                toggleClassDoneAtLoader();
+                toggleClassDoneAtRow();
                 displayResultStrings(filteredResults);
             });
         }
@@ -100,11 +101,11 @@ function init() {
         event.preventDefault();
         let searchString = event.target.value;
         if (searchString.length >= 3) {
-            removeClassDoneAtLoader();
+            toggleClassDoneAtLoader();
             let searchResults = await searchLoad.load(searchString);
             // filter on result and transform in lowercase
             let filteredResults = searchResults.filter((result) => result.title.toLowerCase().includes(searchString));
-            addClassDoneAtLoader();
+            toggleClassDoneAtLoader();
             displaySearchStrings(filteredResults);
         }
     });
@@ -120,7 +121,7 @@ function init() {
     buttonModal.addEventListener('click', (event) => {
         event.preventDefault();
         removeFirstChild();
-        addClassDoneAtModal();
+        toggleClassDoneAtModal();
     })
 }
 

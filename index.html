@@ -27,9 +27,7 @@
                 <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search anime 💬" data-toggle="dropdown"  name ="searchBar" minlength="3" autocomplete="off"/>
                     <!-- Element dynamique -->
-                    <div class="dropdown-menu">
-
-                    </div>
+                    <div class="dropdown-menu"></div>
                     <!-- /Element dynamique -->
                 </form>
                 <!-- /Formulaire de recherche -->
@@ -40,7 +38,7 @@
     <main class="mt-5">
         <div class="py-5 bg-light">
             <div class="container">
-                <h1>My favorite animes 👺</h1>
+                <h1 class="mb-3">My favorite animes 👺</h1>
 
                 <!-- //////////////////////////////////////////////////////////// -->
                 <!-- Loader -->
@@ -53,17 +51,12 @@
                 <!-- //////////////////////////////////////////////////////////// -->
                 <!-- ANIME LIST -->
                 <!-- //////////////////////////////////////////////////////////// -->
-                <div class="row">
-                    <!-- Element dynamique -->
-
-                    <!-- /Element dynamique -->
-                </div>
+                <div class="row"></div>
                 <!-- //////////////////////////////////////////////////////////// -->
                 <!-- /ANIME LIST -->
                 <!-- //////////////////////////////////////////////////////////// -->
             </div>
         </div>
-
     </main>
 
     <footer class="text-muted bg-dark">
@@ -123,16 +116,7 @@
     <!-- //////////////////////////////////////////////////////////// -->
     <!-- /MODAL -->
     <!-- //////////////////////////////////////////////////////////// -->
-    <!-- //////////////////////////////////////////////////////////// -->
-    <!-- Template -->
-    <!-- //////////////////////////////////////////////////////////// -->
-    <template id="#sample1"> 
-        <h5 class="modal-title"></h5>      
-    </template>
-    <!-- //////////////////////////////////////////////////////////// -->
-    <!-- /Template-->
-    <!-- //////////////////////////////////////////////////////////// -->
- 
+
 
     <!-- Attention à l'ordre de chargement quand vous ajoutez un script ! -->
     <script src="https://code.jquery.com/jquery-3.x-git.slim.min.js"></script>
@@ -140,7 +124,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./scripts/api/api.js"></script>
     <script src="./scripts/api/resource.js"></script>
-    <script src="./scripts/api/animeResource.js"></script>
     <script src="./scripts/api/searchResource.js"></script>
     <script src="./scripts/utils.js"></script>
     <script src="./scripts/main.js"></script>
