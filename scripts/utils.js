@@ -28,7 +28,7 @@ function toggleClassDoneAtRow() {
 * @returns void
 */
 function showModal(item) {
-    removeClassDoneAtModal();
+    toggleClassDoneAtModal();
     document.querySelector(".modal-title").textContent = `🔥 ${item.title}`;
     let trailer = item.trailer_url;
     trailer !== null ? document.querySelector(".modal-video").href = `${item.trailer_url}` : document.querySelector(".modal-video").textContent = "";

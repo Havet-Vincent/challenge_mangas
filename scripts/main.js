@@ -52,11 +52,11 @@ function init() {
             btn[i].addEventListener("click", async (event) => {
                 event.preventDefault();
                 toggleClassDoneAtRow();
-                removeClassDoneAtLoader();
+                toggleClassDoneAtLoader();
 
                 const searchItem = await searchResource.byName(event.target.id);
 
-                addClassDoneAtLoader();
+                toggleClassDoneAtLoader();
                 toggleClassDoneAtRow();
                 showModal(searchItem);
             });
@@ -72,7 +72,7 @@ function init() {
                 `;
 
         }).join('');
-        console.log(dropdownMenu);
+        
         dropdownMenu.innerHTML = htmlString;
         const dropdownItem = document.querySelectorAll(".dropdown-item"),
             totaldropdownItem = dropdownItem.length;
@@ -81,14 +81,14 @@ function init() {
         for (let i = 0; i < totaldropdownItem; i++) {
             dropdownItem[i].addEventListener("click", async (event) => {
                 event.preventDefault();
-                addClassDoneAtRow()
-                removeClassDoneAtLoader();
+                toggleClassDoneAtRow()
+                toggleClassDoneAtLoader();
 
                 let searchResults = await searchList.loadList(event.target.id);
                 let filteredResults = searchResults.filter((result) => result.title.includes(event.target.id));
 
-                addClassDoneAtLoader();
-                removeClassDoneAtRow()
+                toggleClassDoneAtLoader();
+                toggleClassDoneAtRow();
                 displayResultStrings(filteredResults);
             });
         }
@@ -101,11 +101,11 @@ function init() {
         event.preventDefault();
         let searchString = event.target.value;
         if (searchString.length >= 3) {
-            removeClassDoneAtLoader();
+            toggleClassDoneAtLoader();
             let searchResults = await searchLoad.load(searchString);
             // filter on result and transform in lowercase
             let filteredResults = searchResults.filter((result) => result.title.toLowerCase().includes(searchString));
-            addClassDoneAtLoader();
+            toggleClassDoneAtLoader();
             displaySearchStrings(filteredResults);
         }
     });
@@ -121,7 +121,7 @@ function init() {
     buttonModal.addEventListener('click', (event) => {
         event.preventDefault();
         removeFirstChild();
-        addClassDoneAtModal();
+        toggleClassDoneAtModal();
     })
 }
 
