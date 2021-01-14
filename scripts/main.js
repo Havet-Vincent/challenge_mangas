@@ -63,7 +63,6 @@ function init() {
         }
     }
 
-
     // function show results enter in search bar
     const displaySearchStrings = (searchStrings) => {
         const htmlString = searchStrings.map((searchString) => {
